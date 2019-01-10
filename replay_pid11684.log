@@ -1,0 +1,49 @@
+JvmtiExport can_access_local_variables 0
+JvmtiExport can_hotswap_or_post_breakpoint 0
+JvmtiExport can_post_on_exceptions 0
+# 361 ciObject found
+ciMethod java/lang/Object <init> ()V 4097 1 5432850 0 0
+ciMethod java/lang/CharSequence toString ()Ljava/lang/String; 0 0 1 0 -1
+ciMethod java/lang/String <init> ([CII)V 2905 1 5543 0 704
+ciMethod java/lang/String charAt (I)C 4097 1 3866498 0 -1
+ciMethod java/lang/String equals (Ljava/lang/Object;)Z 2049 10289 2937 0 -1
+ciMethod java/lang/String replaceAll (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; 2057 1 10335 0 -1
+ciMethod java/lang/String toCharArray ()[C 2057 1 54336 0 256
+ciMethod java/lang/System arraycopy (Ljava/lang/Object;ILjava/lang/Object;II)V 5121 1 640 0 -1
+ciMethod java/lang/StringBuffer <init> ()V 1209 1 13743 0 -1
+ciMethod java/lang/StringBuffer toString ()Ljava/lang/String; 801 1 5327 0 -1
+ciMethod java/lang/Boolean booleanValue ()Z 1025 1 128 0 -1
+ciMethod java/lang/Character charValue ()C 41 1 5 0 -1
+ciMethod java/lang/Float valueOf (F)Ljava/lang/Float; 33 1 4 0 0
+ciMethod java/lang/Float <init> (F)V 33 1 6 0 -1
+ciMethod java/lang/Float floatValue ()F 9 1 1 0 -1
+ciMethod java/lang/Float floatToIntBits (F)I 1 1 1663 0 -1
+ciMethod java/lang/Float intBitsToFloat (I)F 449 1 56 0 -1
+ciMethod java/lang/Number <init> ()V 3257 1 74626 0 32
+ciMethod java/lang/Double valueOf (D)Ljava/lang/Double; 49 1 15 0 0
+ciMethod java/lang/Double <init> (D)V 49 1 15 0 -1
+ciMethod java/lang/Double doubleValue ()D 9 1 4 0 -1
+ciMethod java/lang/Double doubleToLongBits (D)J 0 0 29 0 -1
+ciMethod java/lang/Double longBitsToDouble (J)D 4097 1 512 0 -1
+ciMethod java/lang/Byte intValue ()I 0 0 1 0 0
+ciMethod java/lang/Short intValue ()I 0 0 1 0 0
+ciMethod java/lang/Integer valueOf (I)Ljava/lang/Integer; 2353 1 176864 0 192
+ciMethod java/lang/Integer <init> (I)V 2297 1 57544 0 0
+ciMethod java/lang/Integer intValue ()I 1057 1 132 0 -1
+ciMethod java/lang/Long valueOf (J)Ljava/lang/Long; 2049 1 6647 0 192
+ciMethod java/lang/Long <init> (J)V 2049 1 1273 0 -1
+ciMethod java/lang/Long longValue ()J 17 1 45435 0 -1
+ciMethod java/lang/Math max (II)I 513 1 222452 0 -1
+ciMethod java/lang/Math min (II)I 3841 1 379858 0 -1
+ciMethod java/util/Arrays copyOfRange ([CII)[C 3129 1 5571 0 512
+ciMethodData java/lang/Object <init> ()V 2 5432850 orig 264 88 115 191 83 0 0 0 0 128 4 177 23 0 0 0 0 32 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 145 32 151 2 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 3 0 1 0 0 0 0 0 0 0 255 255 255 255 0 0 0 0 0 0 0 0 data 0 oops 0
+ciMethodData java/util/Arrays copyOfRange ([CII)[C 2 5571 orig 264 88 115 191 83 0 0 0 0 24 157 194 23 0 0 0 0 120 2 0 0 240 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 29 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 135 1 0 0 225 161 0 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 9 0 2 0 0 0 32 1 0 0 255 255 255 255 7 0 5 0 0 0 0 0 data 36 0x50007 0x143c 0x100 0x0 0x100002 0x0 0x140005 0x0 0x0 0x0 0x0 0x0 0x190005 0x0 0x0 0x0 0x0 0x0 0x1d0005 0x0 0x0 0x0 0x0 0x0 0x200005 0x0 0x0 0x0 0x0 0x0 0x230002 0x0 0x360002 0x143c 0x390002 0x143c oops 0
+ciMethodData java/lang/String <init> ([CII)V 2 5543 orig 264 88 115 191 83 0 0 0 0 88 49 177 23 0 0 0 0 80 2 0 0 208 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 25 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 107 1 0 0 225 161 0 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 14 0 2 0 0 0 240 0 0 0 255 255 255 255 2 0 1 0 0 0 0 0 data 30 0x10002 0x143c 0x50007 0x143c 0x30 0x0 0xd0002 0x0 0x120007 0x1432 0x70 0xa 0x160007 0xa 0x30 0x0 0x1e0002 0x0 0x250007 0x0 0x20 0xa 0x370007 0x1432 0x30 0x0 0x410002 0x0 0x4b0002 0x1432 oops 0
+ciMethod java/util/regex/Pattern compile (Ljava/lang/String;)Ljava/util/regex/Pattern; 1585 1 12008 0 -1
+ciMethod java/util/regex/Pattern matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher; 2121 1 5682 0 -1
+ciMethod java/util/regex/Matcher reset ()Ljava/util/regex/Matcher; 833 16641 968 0 -1
+ciMethod java/util/regex/Matcher find ()Z 21001 1 17216 0 -1
+ciMethod java/util/regex/Matcher appendReplacement (Ljava/lang/StringBuffer;Ljava/lang/String;)Ljava/util/regex/Matcher; 47769 26265 27633 0 -1
+ciMethod java/util/regex/Matcher appendTail (Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer; 1473 1 439 0 -1
+ciMethod java/util/regex/Matcher replaceAll (Ljava/lang/String;)Ljava/lang/String; 1057 945 523 0 -1
+ciMethodData java/util/regex/Matcher reset ()Ljava/util/regex/Matcher; 2 19462 orig 264 88 115 191 83 0 0 0 0 120 245 216 23 0 0 0 0 232 1 0 0 32 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 32 8 0 0 1 27 0 0 49 31 2 0 0 0 0 0 0 0 0 0 2 0 0 0 2 0 9 0 2 0 0 0 160 0 0 0 255 255 255 255 7 0 23 0 0 0 0 0 data 20 0x170007 0x360 0x38 0x4380 0x240003 0x4380 0xffffffffffffffe0 0x2f0007 0x360 0x38 0x66 0x3c0003 0x66 0xffffffffffffffe0 0x4b0005 0x0 0x1a9980f0 0x360 0x0 0x0 oops 1
