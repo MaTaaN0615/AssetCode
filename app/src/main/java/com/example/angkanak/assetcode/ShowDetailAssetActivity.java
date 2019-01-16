@@ -199,4 +199,8 @@ public class ShowDetailAssetActivity extends AppCompatActivity {
             TextView boinum = findViewById(R.id.textBoinumber);
             boinum.setText("Description: " + detail_boinum);
         }
-    }
+
+
+
+
+}

@@ -5,12 +5,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.AsyncTask;
 import android.os.Vibrator;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -19,13 +18,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +29,6 @@ import com.zebra.adc.decoder.Barcode2DWithSoft;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Locale;
 
 
 public class Check2DBarcodeActivity extends AppCompatActivity {
@@ -173,6 +168,23 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
         ( (PresentLocation) this.getApplication()).setPreCostcenter(splCostcenter);
         ( (PresentLocation) this.getApplication()).setPreSection(txt_get_locaSec);
         ( (PresentLocation) this.getApplication()).setPreInspector(userCheck);
+
+
+        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.refreshLaout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                amountofSection = findViewById(R.id.amountAsset);
+                int number = dbHelper.queryAssetofSection(splCostcenter, txt_get_locaSec);
+                String num = String.valueOf(number);
+                amountofSection.setText(num);
+
+                refreshLayout();
+
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
     }
 
     @Override
@@ -399,4 +411,15 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void refreshLayout(){
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerview_assetCheck);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mAdapter = new AssetAdapter(this,dbHelper.getDiviceOfSection(splCostcenter,txt_get_locaSec));
+//        mAdapter = new AssetAdapter(this,assetArrayList);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+    }
+
 }
