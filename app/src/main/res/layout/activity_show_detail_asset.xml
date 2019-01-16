@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Asset Details"
+            android:textStyle="bold"
             android:textSize="18dp" />
 
 
@@ -24,86 +26,150 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="Tag Number: " />
+            android:text="Tag Number: "
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/textDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="Description: " />
+            android:text="Description: "
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/textLocationDepart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="Location Department: " />
+            android:text="Location Department: "
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/textCostCenter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="Cost center: " />
+            android:text="Cost center: "
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/textLocationSection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="Location Section: " />
+            android:text="Location Section: "
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/textLocationMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="Location Main: " />
+            android:text="Location Main: "
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/textDateinservice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="Date in service: " />
+            android:text="Date in service: "
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/textUnits"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="Units: " />
+            android:text="Units: "
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/textCurrentcost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="Cost: " />
+            android:text="Cost: "
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/textNetbookvalue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="Book value: " />
+            android:text="Book value: "
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/textBoi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="BOI: " />
+            android:text="BOI: "
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/textBoinumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="BOI NUMBER: " />
+            android:text="BOI NUMBER: "
+            android:textSize="16dp" />
 
+        <com.ebanx.swipebtn.SwipeButton
+            android:id="@+id/assetinarea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:button_background="@drawable/shape_button"
+            app:button_bottom_padding="20dp"
+            app:button_image_disabled="@drawable/ic_unlock_open_black_24dp"
+            app:button_image_enabled="@drawable/ic_lock_outline_black_24dp"
+            app:button_left_padding="20dp"
+            app:button_right_padding="20dp"
+            app:inner_text="พบทรัพย์สินในพื้นที่"
+            app:inner_text_background="@drawable/shape_rounded"
+            app:inner_text_bottom_padding="20dp"
+            app:inner_text_color="@color/gold"
+            app:inner_text_size="18sp"
+            app:inner_text_top_padding="20dp">
 
+        </com.ebanx.swipebtn.SwipeButton>
+
+        <RadioButton
+            android:id="@+id/radioDeline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ชำรุด" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="อื่นๆ :"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:id="@+id/editProblem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:ems="11"
+                android:textSize="16dp"/>
+
+            <Button
+                android:id="@+id/btnSaveProblem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="บันทึก"/>
+        </LinearLayout>
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+
+
+</android.support.v4.widget.NestedScrollView>

@@ -83,9 +83,15 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
         splCostcenter = cc[0];
         splDepartment = cc[1];
 
+       // TextView txtss = (TextView) findViewById(R.id.SS);
+       // txtss.setText(splDepartment);
+
         Intent intent1 = getIntent();
         txt_get_locaSec = intent1.getStringExtra("Loca");
 //        checkAsset.setLocationSectionPresent(txt_get_locaSec);
+
+        Intent getuser = getIntent();
+        userCheck = getuser.getStringExtra("user");
 
 
         barcode2DWithSoft = Barcode2DWithSoft.getInstance();
@@ -119,7 +125,6 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
                 int number = dbHelper.queryAssetofSection(splCostcenter, txt_get_locaSec);
                 String num = String.valueOf(number);
                 amountofSection.setText(num);
-
 
             }
         });
@@ -156,8 +161,19 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
         String num = String.valueOf(number);
         amountofSection.setText(num);
 
-    }
 
+        /*PresentLocation presentLocation = new PresentLocation();
+        presentLocation.setPreDepartment(splDepartment);
+        presentLocation.setPreCostcenter(splCostcenter);
+        presentLocation.setPreSection(txt_get_locaSec);
+        presentLocation.setPreInspector(userCheck);*/
+
+
+        ( (PresentLocation) this.getApplication()).setPreDepartment(splDepartment);
+        ( (PresentLocation) this.getApplication()).setPreCostcenter(splCostcenter);
+        ( (PresentLocation) this.getApplication()).setPreSection(txt_get_locaSec);
+        ( (PresentLocation) this.getApplication()).setPreInspector(userCheck);
+    }
 
     @Override
     protected void onResume() {
@@ -179,7 +195,6 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
         super.onDestroy();
         //android.os.Process.killProcess(Process.myPid());
     }
-
 
     public Barcode2DWithSoft.ScanCallback  ScanBack= new Barcode2DWithSoft.ScanCallback() {
         @Override
@@ -220,10 +235,8 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
         Boolean var;
         SQLiteDatabase database = new DatabaseHelper(this).getReadableDatabase();
 
-        Intent getuser = getIntent();
-        userCheck = getuser.getStringExtra("user");
 
-        //                sub string for save to db
+//                        sub string for save to db
         String[] tokens = readBarcode.split(":");
 //  เพิ่มการค้นหาโดยการอ้างอิงจาก tagnumber เพียงอย่างเดียวเพื่อค้นหาใน masterfile
         QrDivices divices = dbHelper.selectAllDataofAsset(tokens[0]);
@@ -261,7 +274,7 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
 
         if (!var){
             SoundManage.PlaySound(Check2DBarcodeActivity.this,SoundManage.SoundType.FAILURE);
-            SoundManage.PlaySound(Check2DBarcodeActivity.this,SoundManage.SoundType.FAILURE);
+//            SoundManage.PlaySound(Check2DBarcodeActivity.this,SoundManage.SoundType.FAILURE);
         }
 
         amountofSection = findViewById(R.id.amountAsset);
@@ -274,6 +287,7 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
         mAdapter = new AssetAdapter(this,dbHelper.getDiviceOfSection(splCostcenter,txt_get_locaSec));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+
 
     }
 

@@ -43,6 +43,9 @@ public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHol
         public TextView costcenterText;
         public ImageView mDetail;
 
+        public String txtV ;
+
+
         public AssetViewHolder(View itemView, final AdapterView.OnItemClickListener listener) {
             super(itemView);
 
@@ -60,6 +63,7 @@ public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHol
                         mCursor.moveToPosition(position);
                         String tagnumberClick = mCursor.getString(mCursor.getColumnIndex(DatabaseHelper.COL_TAG_NUMBER));
                         intent.putExtra("tagClick", tagnumberClick);
+                       // intent.putExtra("xxx", ((PresentLocation)this.getApplication()).getPreDepartment());
                         mContext.startActivity(intent);
 
 //                        Toast.makeText(mContext, "Click here" + position , Toast.LENGTH_SHORT).show();
