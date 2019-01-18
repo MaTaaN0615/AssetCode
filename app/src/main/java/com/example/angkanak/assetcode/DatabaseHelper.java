@@ -475,21 +475,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //         Report แสดงข้อมูลของฝ่ายงานที่เข้าไปตรวจสอบทั้งหมดที่อ่านมาได้
     public Cursor reportGetAssetOfCostcentercheck(String costcenter, String section){
         SQLiteDatabase db = this.getReadableDatabase();
-//        String selectQuery =  " SELECT " +
-//                COL_TAG_NUMBER + "," +
-//                COL_DESCRIPTION + "," +
-//                 +
-//                " FROM " + TABLE_ASSET +
+        String selectQuery =  " SELECT " +
+                COL_TAG_NUMBER + "," +
+                COL_DESCRIPTION + "," +
+                "'Not found' THIS_ASSET" + "," +
+                "''" + COL_ASSET_INAERA +
+                " FROM " + TABLE_ASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
+                " AND " + COL_TAG_NUMBER + " NOT IN ( " +
+                " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " UNION ALL " + " SELECT " +
+                COL_ASSET_TAGNUMBER + "," +
+                COL_ASSET_DESCRIPTION + "," +
+                "'Found' THIS_ASSET" + "," +
+                COL_ASSET_INAERA +
+                " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_PRESENT_COSTCENTER + "='" +costcenter+ "'" +
+                " AND " + COL_PRESENT_LOCASECTION + "='" +section+ "'"
 //                " LEFT JOIN " + TABLE_CHECKASSET + " ON " + TABLE_CHECKASSET + "." + COL_ASSET_TAGNUMBER + " =" + TABLE_ASSET + "." + COL_TAG_NUMBER +
 //                " WHERE " + COL_COST_CENTER + " LIKE '%" +costcenter+ "%' " +
 //                " AND " + COL_LOCA_SECTION + "  LIKE '%" +section+ "%' " +
 //                " AND " + TABLE_CHECKASSET + "." + COL_ASSET_TAGNUMBER + " IS NULL"
 //                " LIMIT 4 "
 //                " ORDER BY " + COL_CURRENT_COST + " DESC "
-//                ;
+                ;
 
 
-        String selectQuery = "select tag_number ,\n" +
+       /* String selectQuery = "select tag_number ,\n" +
                 "       description ,\n" +
                 "\t   'Not found' this_asset,\n" +
                 "\t   'NULL' chas_inarea\n" +
@@ -506,7 +521,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "\tchas_inarea\n" +
                 "from checkasset \n" +
                 "where present_coscenter = '1011'\n" +
-                "and present_locasection = '7170'";
+                "and present_locasection = '7170'";*/
 
         Cursor cursor = db.rawQuery(selectQuery,null);
 //         looping through all rows and adding to list
