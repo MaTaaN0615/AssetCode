@@ -1,5 +1,8 @@
 package com.example.angkanak.assetcode.adapter;
 
+/*Created when 18-JAN-2019
+* BY K.ANGKANA*/
+
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.angkanak.assetcode.DatabaseHelper;
 import com.example.angkanak.assetcode.R;
@@ -32,6 +36,9 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportView
         public TextView Description;
         public TextView Thisasset;
         public TextView Inarea;
+        public TextView Costcenter;
+        public TextView LocationSection;
+
 
         public ReportViewHolder(View itemView, final AdapterView.OnItemClickListener listener) {
             super(itemView);
@@ -40,6 +47,25 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportView
             Description = itemView.findViewById(R.id.txtDescription_itemReport);
             Thisasset = itemView.findViewById(R.id.txtAsset_itemreport);
             Inarea = itemView.findViewById(R.id.txtInarea_itemreport);
+            Costcenter = itemView.findViewById(R.id.txtMasterCost_itemReport);
+            LocationSection = itemView.findViewById(R.id.textMasterSection_itemReport);
+
+
+
+           /* //If you want to have zebra lines color effect uncomment below code
+            if(mCursor.getString(2) == "1") {
+                itemView.setBackgroundResource(R.drawable.item_backgroundcolor_i);
+            } else if(mCursor.getString(2) == "2" && mCursor.getString(3) == "YES"){
+                itemView.setBackgroundResource(R.drawable.item_backgroundcolor_ii);
+            } else if(mCursor.getString(2)== "2" && mCursor.getString(3) == "NO"){
+                itemView.setBackgroundResource(R.drawable.item_backgroundcolor_iii);
+            }else{
+
+                itemView.setBackgroundResource(R.drawable.actionbar_back);
+            }
+
+            Toast.makeText(mContext,  mCursor.getString(2) , Toast.LENGTH_SHORT).show();
+*/
         }
     }
 
@@ -56,15 +82,21 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportView
         if (!mCursor.moveToPosition(i)){
             return;
         }
+
         String tagnumber = mCursor.getString(0);
         String description =  mCursor.getString(1);
         String thisasset =  mCursor.getString(2);
         String inarea =  mCursor.getString(3);
+        String costcenter =  mCursor.getString(4);
+        String locationSection =  mCursor.getString(5);
+
 
         reportViewHolder.Tagnumber.setText(tagnumber);
         reportViewHolder.Description.setText(description);
         reportViewHolder.Thisasset.setText(thisasset);
         reportViewHolder.Inarea.setText(inarea);
+        reportViewHolder.Costcenter.setText(costcenter);
+        reportViewHolder.LocationSection.setText(locationSection);
     }
 
 

@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Report_MainActivity"></activity>
+        <activity android:name=".DetailAssetActivity"></activity>
+        <activity android:name=".Report_MainActivity" />
         <activity android:name=".Report_SectionActivity" />
         <activity android:name=".Report_CostcenterActivity" />
         <activity android:name=".ReportActivity" />

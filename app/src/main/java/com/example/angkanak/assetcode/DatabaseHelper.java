@@ -479,7 +479,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_TAG_NUMBER + "," +
                 COL_DESCRIPTION + "," +
                 "'Not found' THIS_ASSET" + "," +
-                "''" + COL_ASSET_INAERA +
+                "''" + COL_ASSET_INAERA + "," +
+                COL_COST_CENTER +"," +
+                COL_LOCA_SECTION +
                 " FROM " + TABLE_ASSET +
                 " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
                 " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
@@ -491,16 +493,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_ASSET_TAGNUMBER + "," +
                 COL_ASSET_DESCRIPTION + "," +
                 "'Found' THIS_ASSET" + "," +
-                COL_ASSET_INAERA +
+                COL_ASSET_INAERA + "," +
+                 COL_ASSET_COSTCENTER + "," +
+                 COL_ASSET_LOCASECTION +
                 " FROM " + TABLE_CHECKASSET +
                 " WHERE " + COL_PRESENT_COSTCENTER + "='" +costcenter+ "'" +
                 " AND " + COL_PRESENT_LOCASECTION + "='" +section+ "'"
-//                " LEFT JOIN " + TABLE_CHECKASSET + " ON " + TABLE_CHECKASSET + "." + COL_ASSET_TAGNUMBER + " =" + TABLE_ASSET + "." + COL_TAG_NUMBER +
-//                " WHERE " + COL_COST_CENTER + " LIKE '%" +costcenter+ "%' " +
-//                " AND " + COL_LOCA_SECTION + "  LIKE '%" +section+ "%' " +
-//                " AND " + TABLE_CHECKASSET + "." + COL_ASSET_TAGNUMBER + " IS NULL"
-//                " LIMIT 4 "
-//                " ORDER BY " + COL_CURRENT_COST + " DESC "
                 ;
 
 
@@ -525,6 +523,293 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery(selectQuery,null);
 //         looping through all rows and adding to list
+        if (cursor == null) {
+            return null;
+        } else if (!cursor.moveToFirst()) {
+            cursor.close();
+            return null;
+        }
+        return cursor;
+
+    }
+
+//    Report นับจำนวนทรัพย์สินที่ตรวจสอบทั้งหมด
+    int AllAssetCheck;
+    public int countReportAllAssetCheck(String costcenter, String section){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery =  " SELECT COUNT(*)" +
+                " FROM " +  " (SELECT " +
+                COL_TAG_NUMBER + "," +
+                COL_DESCRIPTION + "," +
+                "'Not found' THIS_ASSET" + "," +
+                "''" + COL_ASSET_INAERA +
+                " FROM " + TABLE_ASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
+                " AND " + COL_TAG_NUMBER + " NOT IN ( " +
+                " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " UNION ALL " + " SELECT " +
+                COL_ASSET_TAGNUMBER + "," +
+                COL_ASSET_DESCRIPTION + "," +
+                "'Found' THIS_ASSET" + "," +
+                COL_ASSET_INAERA +
+                " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_PRESENT_COSTCENTER + "='" +costcenter+ "'" +
+                " AND " + COL_PRESENT_LOCASECTION + "='" +section+ "'" + ")"
+                ;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        if (cursor != null && cursor.getCount() > 0) {
+            AllAssetCheck = cursor.getInt(0);
+        }
+        cursor.close();
+        // return user
+        return AllAssetCheck;
+    }
+
+
+//        Report นับจำนวนทรัพย์สินที่ตรวจสอบแล้วไม่พบในพื้นที่ตรวจสอบ
+    int AssetNOTFOUNDCheck;
+    public int countReportAssetNotfoundCheck(String costcenter, String section){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery =  " SELECT COUNT(*)" +
+                " FROM " +  " (SELECT " +
+                COL_TAG_NUMBER + "," +
+                COL_DESCRIPTION + "," +
+                "'Not found' THIS_ASSET" + "," +
+                "''" + COL_ASSET_INAERA +
+                " FROM " + TABLE_ASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
+                " AND " + COL_TAG_NUMBER + " NOT IN ( " +
+                " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " UNION ALL " + " SELECT " +
+                COL_ASSET_TAGNUMBER + "," +
+                COL_ASSET_DESCRIPTION + "," +
+                "'Found' THIS_ASSET" + "," +
+                COL_ASSET_INAERA +
+                " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_PRESENT_COSTCENTER + "='" +costcenter+ "'" +
+                " AND " + COL_PRESENT_LOCASECTION + "='" +section+ "'" + ")" +
+                " WHERE THIS_ASSET = 'Not found' "
+                ;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        if (cursor != null && cursor.getCount() > 0) {
+            AssetNOTFOUNDCheck = cursor.getInt(0);
+        }
+        cursor.close();
+        // return user
+        return AssetNOTFOUNDCheck;
+    }
+
+//   Report แสดงทรัพย์สินที่ตรวจสอบแล้วไม่พบในพื้นที่ตรวจสอบ
+    public Cursor detailReportAssetNotfoundCheck(String costcenter, String section){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery =  " SELECT *" +
+                " FROM " +  " ( SELECT " +
+                COL_TAG_NUMBER + "," +
+                COL_DESCRIPTION + "," +
+                "'Not found' THIS_ASSET" + "," +
+                "''" + COL_ASSET_INAERA + "," +
+                COL_COST_CENTER +"," +
+                COL_LOCA_SECTION +
+                " FROM " + TABLE_ASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
+                " AND " + COL_TAG_NUMBER + " NOT IN ( " +
+                " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " UNION ALL " + " SELECT " +
+                COL_ASSET_TAGNUMBER + "," +
+                COL_ASSET_DESCRIPTION + "," +
+                "'Found' THIS_ASSET" + "," +
+                COL_ASSET_INAERA +  "," +
+                COL_ASSET_COSTCENTER + "," +
+                COL_ASSET_LOCASECTION +
+                " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_PRESENT_COSTCENTER + "='" +costcenter+ "'" +
+                " AND " + COL_PRESENT_LOCASECTION + "='" +section+ "'" + ")" +
+                " WHERE THIS_ASSET = 'Not found' "
+                ;
+
+            Cursor cursor = db.rawQuery(selectQuery,null);
+    //         looping through all rows and adding to list
+        if (cursor == null) {
+            return null;
+        } else if (!cursor.moveToFirst()) {
+            cursor.close();
+            return null;
+        }
+        return cursor;
+
+    }
+
+//            Report นับจำนวนทรัพย์สินที่ตรวจสอบแล้วพบในพื้นที่ตรวจสอบ
+    int AssetFOUNDYESCheck;
+    public int countReportAssetFoundyesCheck(String costcenter, String section){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery =  " SELECT COUNT(*)" +
+                " FROM " +  " (SELECT " +
+                COL_TAG_NUMBER + "," +
+                COL_DESCRIPTION + "," +
+                "'Not found' THIS_ASSET" + "," +
+                "''" + COL_ASSET_INAERA +
+                " FROM " + TABLE_ASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
+                " AND " + COL_TAG_NUMBER + " NOT IN ( " +
+                " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " UNION ALL " + " SELECT " +
+                COL_ASSET_TAGNUMBER + "," +
+                COL_ASSET_DESCRIPTION + "," +
+                "'Found' THIS_ASSET" + "," +
+                COL_ASSET_INAERA +
+                " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_PRESENT_COSTCENTER + "='" +costcenter+ "'" +
+                " AND " + COL_PRESENT_LOCASECTION + "='" +section+ "'" + ")" +
+                " WHERE THIS_ASSET = 'Found' " +
+                " AND " + COL_ASSET_INAERA + " = 'YES'"
+                ;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        if (cursor != null && cursor.getCount() > 0) {
+            AssetFOUNDYESCheck = cursor.getInt(0);
+        }
+        cursor.close();
+        // return user
+        return AssetFOUNDYESCheck;
+    }
+
+//                Report นับจำนวนทรัพย์สินที่ตรวจสอบแล้วพบในพื้นที่ตรวจสอบ
+    public Cursor detailReportAssetFoundyesCheck(String costcenter, String section){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery =  " SELECT *" +
+                " FROM " +  " ( SELECT " +
+                COL_TAG_NUMBER + "," +
+                COL_DESCRIPTION + "," +
+                "'Not found' THIS_ASSET" + "," +
+                "''" + COL_ASSET_INAERA + "," +
+                COL_COST_CENTER +"," +
+                COL_LOCA_SECTION +
+                " FROM " + TABLE_ASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
+                " AND " + COL_TAG_NUMBER + " NOT IN ( " +
+                " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " UNION ALL " + " SELECT " +
+                COL_ASSET_TAGNUMBER + "," +
+                COL_ASSET_DESCRIPTION + "," +
+                "'Found' THIS_ASSET" + "," +
+                COL_ASSET_INAERA + "," +
+                COL_ASSET_COSTCENTER + "," +
+                COL_ASSET_LOCASECTION +
+                " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_PRESENT_COSTCENTER + "='" +costcenter+ "'" +
+                " AND " + COL_PRESENT_LOCASECTION + "='" +section+ "'" + ")" +
+                " WHERE THIS_ASSET = 'Found' " +
+                " AND " + COL_ASSET_INAERA + " = 'YES'"
+                ;
+
+            Cursor cursor = db.rawQuery(selectQuery,null);
+    //         looping through all rows and adding to list
+        if (cursor == null) {
+            return null;
+        } else if (!cursor.moveToFirst()) {
+            cursor.close();
+            return null;
+        }
+        return cursor;
+
+    }
+
+
+
+    //        Report นับจำนวนทรัพย์สินที่ตรวจสอบแล้วไม่พบในพื้นที่ตรวจสอบ
+    int AssetFOUNDNOCheck;
+    public int countReportAssetFoundnoCheck(String costcenter, String section){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery =  " SELECT COUNT(*)" +
+                " FROM " +  " (SELECT " +
+                COL_TAG_NUMBER + "," +
+                COL_DESCRIPTION + "," +
+                "'Not found' THIS_ASSET" + "," +
+                "''" + COL_ASSET_INAERA +
+                " FROM " + TABLE_ASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
+                " AND " + COL_TAG_NUMBER + " NOT IN ( " +
+                " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " UNION ALL " + " SELECT " +
+                COL_ASSET_TAGNUMBER + "," +
+                COL_ASSET_DESCRIPTION + "," +
+                "'Found' THIS_ASSET" + "," +
+                COL_ASSET_INAERA +
+                " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_PRESENT_COSTCENTER + "='" +costcenter+ "'" +
+                " AND " + COL_PRESENT_LOCASECTION + "='" +section+ "'" + ")" +
+                " WHERE THIS_ASSET = 'Found' " +
+                " AND " + COL_ASSET_INAERA + " = 'NO'"
+                ;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        if (cursor != null && cursor.getCount() > 0) {
+            AssetFOUNDNOCheck = cursor.getInt(0);
+        }
+        cursor.close();
+        // return user
+        return AssetFOUNDNOCheck;
+    }
+
+//   Report แสดงทรัพย์สินที่ตรวจสอบแล้วไม่พบในพื้นที่ตรวจสอบ
+    public Cursor detailReportAssetFoundnoCheck(String costcenter, String section){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery =  " SELECT *" +
+                " FROM " +  " ( SELECT " +
+                COL_TAG_NUMBER + "," +
+                COL_DESCRIPTION + "," +
+                "'Not found' THIS_ASSET" + "," +
+                "''" + COL_ASSET_INAERA + "," +
+                COL_COST_CENTER + "," +
+                COL_LOCA_SECTION +
+                " FROM " + TABLE_ASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
+                " AND " + COL_TAG_NUMBER + " NOT IN ( " +
+                " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
+                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " UNION ALL " + " SELECT " +
+                COL_ASSET_TAGNUMBER + "," +
+                COL_ASSET_DESCRIPTION  + "," +
+                "'Found' THIS_ASSET" + "," +
+                COL_ASSET_INAERA + "," +
+                COL_ASSET_COSTCENTER + "," +
+                COL_ASSET_LOCASECTION +
+                " FROM " + TABLE_CHECKASSET +
+                " WHERE " + COL_PRESENT_COSTCENTER + "='" +costcenter+ "'" +
+                " AND " + COL_PRESENT_LOCASECTION + "='" +section+ "'" + ")" +
+                 " WHERE THIS_ASSET = 'Found' " +
+                " AND " + COL_ASSET_INAERA + " = 'NO'"
+                ;
+
+            Cursor cursor = db.rawQuery(selectQuery,null);
+    //         looping through all rows and adding to list
         if (cursor == null) {
             return null;
         } else if (!cursor.moveToFirst()) {

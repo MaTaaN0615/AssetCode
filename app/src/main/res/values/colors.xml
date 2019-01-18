@@ -100,5 +100,10 @@
         <item>#888888</item>
     </string-array>
 
+    <!--color in report : bg-->
+    <color name="NOTFOUND">#ec7063</color>
+    <color name="FOUNDYES">#82e0aa</color>
+    <color name="FOUNDNO">#f9e79f</color>
+
 </resources>
 

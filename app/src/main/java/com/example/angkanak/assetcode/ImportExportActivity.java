@@ -1,10 +1,12 @@
 package com.example.angkanak.assetcode;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 
 public class ImportExportActivity extends AppCompatActivity {
 
-    String txt;
+    Button btnmainmenuIMEX;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,15 @@ public class ImportExportActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 readWeatherData();
+            }
+        });
+
+        btnmainmenuIMEX = findViewById(R.id.btnmainmenuIMEX);
+        btnmainmenuIMEX.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ImportExportActivity.this,MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -95,7 +106,7 @@ public class ImportExportActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),android.R.layout.simple_list_item_1,arrayList_txt);
-        final ListView listView = (ListView)findViewById(R.id.Listview);
+        final ListView listView = (ListView)findViewById(R.id.listViewAllAsset);
         listView.setAdapter(adapter);
 
     }

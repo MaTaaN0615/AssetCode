@@ -1,5 +1,8 @@
 package com.example.angkanak.assetcode.adapter;
 
+/*Created when 19-JAN-2019
+ * BY K.ANGKANA*/
+
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,33 +17,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.angkanak.assetcode.DatabaseHelper;
-import com.example.angkanak.assetcode.model.QrDivices;
+import com.example.angkanak.assetcode.DetailAssetActivity;
 import com.example.angkanak.assetcode.R;
 import com.example.angkanak.assetcode.ShowDetailAssetActivity;
 
-import java.util.ArrayList;
-
-public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHolder> {
-
+public class SearchAdapter extends RecyclerView.Adapter <SearchAdapter.SearchViewHolder>{
     private Context mContext;
     private Cursor mCursor;
     private AdapterView.OnItemClickListener mListener;
-    ArrayList<QrDivices> divices = new ArrayList<>();
 
-    public AssetAdapter(Context context, Cursor cursor) {
+    public SearchAdapter(Context context, Cursor cursor) {
         mContext = context;
         mCursor = cursor;
     }
 
-
-
-    public class AssetViewHolder extends RecyclerView.ViewHolder{
+    public class SearchViewHolder extends RecyclerView.ViewHolder{
         public TextView numberText;
         public TextView idText;
         public TextView costcenterText;
         public ImageView mDetail;
 
-        public AssetViewHolder(View itemView, final AdapterView.OnItemClickListener listener) {
+        public SearchViewHolder(View itemView, final AdapterView.OnItemClickListener listener) {
             super(itemView);
 
             idText = itemView.findViewById(R.id.txtId_item);
@@ -53,7 +50,7 @@ public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHol
                 public boolean onTouch(View v, MotionEvent event) {
                     int position = getAdapterPosition();
                     if(event.getAction() == MotionEvent.ACTION_UP) {
-                        Intent intent = new Intent(mContext, ShowDetailAssetActivity.class);
+                        Intent intent = new Intent(mContext, DetailAssetActivity.class);
                         mCursor.moveToPosition(position);
                         String tagnumberClick = mCursor.getString(mCursor.getColumnIndex(DatabaseHelper.COL_TAG_NUMBER));
                         intent.putExtra("tagClick", tagnumberClick);
@@ -62,18 +59,6 @@ public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHol
 //                        Toast.makeText(mContext, "Click here" + position , Toast.LENGTH_SHORT).show();
                     }
                     return true;
-
-//                    if(event.getAction() == MotionEvent.ACTION_UP){
-//
-//                         Do what you want
-//                        int position = getAdapterPosition();
-//                        Intent intent = new Intent(mContext, SearchShowdetailActivity.class);
-//                        intent.putExtra("positionClick", position);
-//                        mContext.startActivity(intent);
-
-//                        return true;
-//                    }
-//                    return false;
                 }
             });
         }
@@ -81,14 +66,14 @@ public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHol
 
     @NonNull
     @Override
-    public AssetViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public SearchAdapter.SearchViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(R.layout.item, viewGroup, false);
-        return new AssetViewHolder(view,mListener);
+        View view = inflater.inflate(R.layout.itemforsearch, viewGroup, false);
+        return new SearchAdapter.SearchViewHolder(view,mListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AssetViewHolder assetViewHolder, int position) {
+    public void onBindViewHolder(@NonNull SearchAdapter.SearchViewHolder searchViewHolder, int position) {
 
         if (!mCursor.moveToPosition(position)){
             return;
@@ -98,9 +83,9 @@ public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHol
         String tagnumber = mCursor.getString(mCursor.getColumnIndex(DatabaseHelper.COL_TAG_NUMBER));
         String costcenter = mCursor.getString(mCursor.getColumnIndex(DatabaseHelper.COL_COST_CENTER));
 
-        assetViewHolder.idText.setText(index);
-        assetViewHolder.numberText.setText(tagnumber);
-        assetViewHolder.costcenterText.setText(costcenter);
+        searchViewHolder.idText.setText(index);
+        searchViewHolder.numberText.setText(tagnumber);
+        searchViewHolder.costcenterText.setText(costcenter);
 
     }
 
@@ -113,7 +98,6 @@ public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHol
         }
 
     }
-
 
     public void swapCursor(Cursor newCursor){
         if(mCursor != null){

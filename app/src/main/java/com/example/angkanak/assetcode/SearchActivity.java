@@ -19,17 +19,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.angkanak.assetcode.adapter.AssetAdapter;
+import com.example.angkanak.assetcode.adapter.SearchAdapter;
 
 public class SearchActivity extends AppCompatActivity {
-
 
     DatabaseHelper dbHelper = new DatabaseHelper(this);
     private SQLiteDatabase mDatabase;
 
     private RecyclerView recyclerView;
-    private AssetAdapter mAdapter;
+    private SearchAdapter mAdapter;
 
-    private final static String TAG= SearchActivity.class.getName().toString();
+    private final static String TAG = SearchActivity.class.getName().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,63 +39,11 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mAdapter = new AssetAdapter(this,dbHelper.getAllItems());
+        mAdapter = new SearchAdapter(this,dbHelper.getAllItems());
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-
-        /*recyclerView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Toast.makeText(getApplicationContext(),"Click here", Toast.LENGTH_SHORT).show();;
-                return true;
-            }
-        });*/
-
-//        recyclerView.setAdapter(new RecyclerVeiwAdapter());
-
-//        mAdapter.swapCursor(dbHelper.getAllItems());
-//        db = new DatabaseHelper( this);
-//        mDatabase = db.getReadableDatabase();
-
-//        cursor = db.getAssetList();
-//        assetAdapter = new AssetAdapter(SearchActivity.this, cursor,0);
-//        listAssetShow = (ListView) findViewById(R.id.lstAsset);
-//        listAssetShow.setAdapter(assetAdapter);
-
-//        ViewData();
-
-//        listAssetShow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                String text = listAssetShow.getItemAtPosition(position).toString();
-//                Toast.makeText(SearchActivity.this, ""+text, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-//        recyclerView.OnClickListener(new View.OnClickListener())
-
     }
 
-    public class RecyclerVeiwAdapter extends RecyclerView.Adapter<ViewHolder>{
-
-        @NonNull
-        @Override
-        public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
-            View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.show_search_item,viewGroup,false);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return 1000;
-        }
-    }
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView tvTagnum;
@@ -137,20 +85,6 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-
-    /*private void ViewData(){
-        Cursor cursor = db.viewData();
-        if (cursor.getCount() == 0){
-            Toast.makeText(SearchActivity.this,"No data to show", Toast.LENGTH_SHORT).show();
-        }else {
-            while (cursor.moveToNext()){
-                listItem.add(cursor.getString(0));
-            }
-
-            adapter = new ArrayAdapter(SearchActivity.this,android.R.layout.simple_list_item_1,listItem);
-            listAssetShow.setAdapter(adapter);
-        }
-    }*/
 
 
     @Override

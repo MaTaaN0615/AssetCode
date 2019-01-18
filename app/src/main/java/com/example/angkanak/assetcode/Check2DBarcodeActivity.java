@@ -1,5 +1,9 @@
 package com.example.angkanak.assetcode;
 
+/*Created when 17-JAN-2019
+ * BY K.ANGKANA
+ * */
+
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -50,7 +54,7 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
 
     RadioButton radioButton;
     EditText editDecline;
-    Button btnSaveProblem;
+    Button btnSaveProblem, btnmainmenu2DBarcodeActivity;
 
     private AssetAdapter assetAdapter;
     Cursor cursor;
@@ -159,14 +163,6 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
         String num = String.valueOf(number);
         amountofSection.setText(num);
 
-
-        /*PresentLocation presentLocation = new PresentLocation();
-        presentLocation.setPreDepartment(splDepartment);
-        presentLocation.setPreCostcenter(splCostcenter);
-        presentLocation.setPreSection(txt_get_locaSec);
-        presentLocation.setPreInspector(userCheck);*/
-
-
         ( (PresentLocation) this.getApplication()).setPreDepartment(splDepartment);
         ( (PresentLocation) this.getApplication()).setPreCostcenter(splCostcenter);
         ( (PresentLocation) this.getApplication()).setPreSection(txt_get_locaSec);
@@ -185,6 +181,15 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
                 refreshLayout();
 
                 swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        btnmainmenu2DBarcodeActivity = findViewById(R.id.btnmainmenu2DBarcodeActivity);
+        btnmainmenu2DBarcodeActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Check2DBarcodeActivity.this,MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -235,7 +240,7 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
                 } catch (UnsupportedEncodingException ex) {
                 }
 
-                data1.setText(barCode);
+//                data1.setText(barCode);
 //                String fullTagBar = barCode;
 
 //               call function to compare location of divice
@@ -253,6 +258,7 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
 
 //                        sub string for save to db
         String[] tokens = readBarcode.split(":");
+        data1.setText(tokens[0]+ ":" + tokens[1]);
 //  เพิ่มการค้นหาโดยการอ้างอิงจาก tagnumber เพียงอย่างเดียวเพื่อค้นหาใน masterfile
         QrDivices divices = dbHelper.selectAllDataofAsset(tokens[0]);
 
@@ -420,7 +426,6 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mAdapter = new AssetAdapter(this,dbHelper.getDiviceOfSection(splCostcenter,txt_get_locaSec));
-//        mAdapter = new AssetAdapter(this,assetArrayList);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
     }

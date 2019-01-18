@@ -46,13 +46,6 @@ public class ShowDetailAssetActivity extends AppCompatActivity {
         divices = dbHelper.selectAllDataofAsset(tagnumber);
 
         getIncomingIntent();
-//        int positions = 10;
-                //Integer.parseInt(getIntent().getStringExtra("positionClick"));
-//        if (positions > 0){
-//            TextView tag = findViewById(R.id.textTagNumber);
-//            tag.setText("Tag Number: " + "5410110615");
-//        }
-
         assetInArea = (SwipeButton)findViewById(R.id.assetinarea);
         assetInArea.setOnStateChangeListener(new OnStateChangeListener() {
             @Override
