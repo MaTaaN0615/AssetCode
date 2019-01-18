@@ -10,68 +10,80 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-  private Button btnexit, btnasset, btnIEport, btnSearch;
+  private Button btnexit, btnasset, btnIEport, btnSearch, btnReport;
   String userCheck = null;
 
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_main);
 
-    Intent getuser = getIntent();
-      userCheck = getuser.getStringExtra("user");
+      Intent getuser = getIntent();
+        userCheck = getuser.getStringExtra("user");
 
-    btnasset = (Button)findViewById(R.id.btnAsset);
-    btnasset.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        Intent intent = new Intent(MainActivity.this, AssetCostcenterActivity.class);
-          intent.putExtra("user", ""+userCheck+"");
-        startActivity(intent);
-      }
-    });
+      btnasset = (Button)findViewById(R.id.btnAsset);
+      btnasset.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+          Intent intent = new Intent(MainActivity.this, AssetCostcenterActivity.class);
+            intent.putExtra("user", ""+userCheck+"");
+          startActivity(intent);
+        }
+      });
 
-    btnIEport = (Button) findViewById(R.id.btnImExport);
-    btnIEport.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent intentIE = new Intent(MainActivity.this, ImportExportActivity.class);
-        startActivity(intentIE);
-      }
-    });
+      btnIEport = (Button) findViewById(R.id.btnImExport);
+      btnIEport.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          Intent intentIE = new Intent(MainActivity.this, ImportExportActivity.class);
+          startActivity(intentIE);
+        }
+      });
 
-    btnexit = (Button)findViewById(R.id.btnExit);
-    btnexit.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Exit");
-        builder.setMessage("Do you want to exit ??");
-        builder.setPositiveButton("Yes. Exit now!", new DialogInterface.OnClickListener() {
+      btnexit = (Button)findViewById(R.id.btnExit);
+      btnexit.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+          builder.setTitle("Exit");
+          builder.setMessage("Do you want to exit ??");
+          builder.setPositiveButton("Yes. Exit now!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+              finish();
+            }
+          });
+          builder.setNegativeButton("Not now.", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+              dialog.dismiss();
+            }
+          });
+          AlertDialog dialog = builder.create();
+          dialog.show();
+        }
+      });
+
+      btnSearch = (Button)findViewById(R.id.btnSearch);
+      btnSearch.setOnClickListener(new View.OnClickListener() {
           @Override
-          public void onClick(DialogInterface dialog, int which) {
-            finish();
+          public void onClick(View v) {
+            Intent intentSearch = new Intent(MainActivity.this, SearchActivity.class );
+            startActivity( intentSearch);
           }
-        });
-        builder.setNegativeButton("Not now.", new DialogInterface.OnClickListener() {
-          @Override
-          public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
-          }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-      }
-    });
+      });
 
-    btnSearch = (Button)findViewById(R.id.btnSearch);
-    btnSearch.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent intentSearch = new Intent(MainActivity.this, SearchActivity.class );
-        startActivity( intentSearch);
-      }
-    });
+      btnReport = (Button)findViewById(R.id.btnReport);
+      btnReport.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          Intent intentReport = new Intent(MainActivity.this, Report_MainActivity.class);
+          startActivity(intentReport);
+        }
+      });
+
+
   }
+
 }

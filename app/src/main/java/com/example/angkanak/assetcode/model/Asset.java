@@ -1,4 +1,4 @@
-package com.example.angkanak.assetcode;
+package com.example.angkanak.assetcode.model;
 
 public class Asset {
     private int _id;

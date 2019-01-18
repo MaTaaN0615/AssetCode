@@ -25,6 +25,11 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.angkanak.assetcode.adapter.AssetAdapter;
+import com.example.angkanak.assetcode.model.Asset;
+import com.example.angkanak.assetcode.model.CheckAsset;
+import com.example.angkanak.assetcode.model.PresentLocation;
+import com.example.angkanak.assetcode.model.QrDivices;
 import com.zebra.adc.decoder.Barcode2DWithSoft;
 
 import java.io.UnsupportedEncodingException;
@@ -37,12 +42,10 @@ public class Check2DBarcodeActivity extends AppCompatActivity {
     String barCode = "";
     EditText data1;
     Button btn;
-    ListView lvShoeAsset;
     Barcode2DWithSoft barcode2DWithSoft = null;
     String seldata = "UTF-8";
     HomeKeyEventBroadCastReceiver     receiver;
 
-    CheckAsset checkAsset;
     String statusArea, statusDecline = null, statusDecline_detail;
 
     RadioButton radioButton;

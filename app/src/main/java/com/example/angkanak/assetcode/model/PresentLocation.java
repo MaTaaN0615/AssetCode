@@ -1,10 +1,8 @@
-package com.example.angkanak.assetcode;
+package com.example.angkanak.assetcode.model;
 
 import android.app.Application;
 
 public class PresentLocation extends Application {
-
-
 
     private String preDepartment;
     private String preCostcenter;
@@ -50,6 +48,5 @@ public class PresentLocation extends Application {
     public void setPreInspector(String preInspector) {
         this.preInspector = preInspector;
     }
-
 
 }

@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import com.ebanx.swipebtn.OnStateChangeListener;
 import com.ebanx.swipebtn.SwipeButton;
+import com.example.angkanak.assetcode.model.CheckAsset;
+import com.example.angkanak.assetcode.model.PresentLocation;
+import com.example.angkanak.assetcode.model.QrDivices;
 
 public class ShowDetailAssetActivity extends AppCompatActivity {
 

@@ -1,27 +1,26 @@
-package com.example.angkanak.assetcode;
+package com.example.angkanak.assetcode.adapter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
-import android.support.v4.widget.CursorAdapter;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.angkanak.assetcode.DatabaseHelper;
+import com.example.angkanak.assetcode.model.QrDivices;
+import com.example.angkanak.assetcode.R;
+import com.example.angkanak.assetcode.ShowDetailAssetActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHolder> {
-
 
     private Context mContext;
     private Cursor mCursor;

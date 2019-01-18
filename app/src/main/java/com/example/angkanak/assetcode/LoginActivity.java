@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.angkanak.assetcode.model.User;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

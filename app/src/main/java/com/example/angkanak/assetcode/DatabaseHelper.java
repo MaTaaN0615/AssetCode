@@ -3,16 +3,16 @@ package com.example.angkanak.assetcode;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.icu.text.SimpleDateFormat;
 import android.util.Log;
-import android.widget.Toast;
+
+import com.example.angkanak.assetcode.model.Asset;
+import com.example.angkanak.assetcode.model.CheckAsset;
+import com.example.angkanak.assetcode.model.QrDivices;
+import com.example.angkanak.assetcode.model.User;
 
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.Locale;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "SFIASSET.db";
@@ -471,4 +471,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // return user
         return amountAsset;
     }
+
+//         Report แสดงข้อมูลของฝ่ายงานที่เข้าไปตรวจสอบทั้งหมดที่อ่านมาได้
+    public Cursor reportGetAssetOfCostcentercheck(String costcenter, String section){
+        SQLiteDatabase db = this.getReadableDatabase();
+//        String selectQuery =  " SELECT " +
+//                COL_TAG_NUMBER + "," +
+//                COL_DESCRIPTION + "," +
+//                 +
+//                " FROM " + TABLE_ASSET +
+//                " LEFT JOIN " + TABLE_CHECKASSET + " ON " + TABLE_CHECKASSET + "." + COL_ASSET_TAGNUMBER + " =" + TABLE_ASSET + "." + COL_TAG_NUMBER +
+//                " WHERE " + COL_COST_CENTER + " LIKE '%" +costcenter+ "%' " +
+//                " AND " + COL_LOCA_SECTION + "  LIKE '%" +section+ "%' " +
+//                " AND " + TABLE_CHECKASSET + "." + COL_ASSET_TAGNUMBER + " IS NULL"
+//                " LIMIT 4 "
+//                " ORDER BY " + COL_CURRENT_COST + " DESC "
+//                ;
+
+
+        String selectQuery = "select tag_number ,\n" +
+                "       description ,\n" +
+                "\t   'Not found' this_asset,\n" +
+                "\t   'NULL' chas_inarea\n" +
+                "from assetforuser\n" +
+                "where cost_center = '1011'\n" +
+                "and loca_section = '7170'\n" +
+                "and tag_number not in (\n" +
+                "select chas_tagnumber from checkasset where chas_costcenter = '1011' and loca_section = '7170'\n" +
+                ")\n" +
+                "union all\n" +
+                "select chas_tagnumber,\n" +
+                "\tchas_description,\n" +
+                "\t'Found' this_asset,\n" +
+                "\tchas_inarea\n" +
+                "from checkasset \n" +
+                "where present_coscenter = '1011'\n" +
+                "and present_locasection = '7170'";
+
+        Cursor cursor = db.rawQuery(selectQuery,null);
+//         looping through all rows and adding to list
+        if (cursor == null) {
+            return null;
+        } else if (!cursor.moveToFirst()) {
+            cursor.close();
+            return null;
+        }
+        return cursor;
+
+    }
+
+
 }

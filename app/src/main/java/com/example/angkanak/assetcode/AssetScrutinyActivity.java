@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.angkanak.assetcode.UHF.UHFMainActivity;
-import com.example.angkanak.assetcode.fragment.UHFReadTagFragment;
+import com.example.angkanak.assetcode.model.CheckAsset;
 
 public class AssetScrutinyActivity extends AppCompatActivity {
 
