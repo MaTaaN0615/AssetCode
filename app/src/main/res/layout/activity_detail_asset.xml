@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,14 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="8dp"
+        tools:ignore="MissingConstraints">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Asset Details"
+        android:textColor="@color/colorAccent"
         android:textStyle="bold"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
 
     <TextView
@@ -26,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="Tag Number: "
-        android:textSize="16dp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textDescriptionDetail"
@@ -34,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="Description: "
-        android:textSize="16dp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textLocationDepartDetail"
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="Location Department: "
-        android:textSize="16dp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textCostCenterDetail"
@@ -50,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="Cost center: "
-        android:textSize="16dp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textLocationSectionDetail"
@@ -58,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="Location Section: "
-        android:textSize="16dp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textLocationMainDetail"
@@ -66,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="Location Main: "
-        android:textSize="16dp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textDateinserviceDetail"
@@ -74,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="Date in service: "
-        android:textSize="16dp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textUnitsDetail"
@@ -82,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="Units: "
-        android:textSize="16dp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textCurrentcostDetail"
@@ -90,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="Cost: "
-        android:textSize="16dp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textNetbookvalueDetail"
@@ -98,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="Book value: "
-        android:textSize="16dp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textBoiDetail"
@@ -106,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="BOI: "
-        android:textSize="16dp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textBoinumberDetail"
@@ -114,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="BOI NUMBER: "
-        android:textSize="16dp" />
+        android:textSize="16sp" />
 
     </LinearLayout>
 

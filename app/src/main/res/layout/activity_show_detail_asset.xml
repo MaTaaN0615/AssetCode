@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:text="Asset Details"
             android:textStyle="bold"
-            android:textSize="18dp" />
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
 
 
         <TextView
@@ -27,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="Tag Number: "
-            android:textSize="16dp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textDescription"
@@ -35,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="Description: "
-            android:textSize="16dp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textLocationDepart"
@@ -43,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="Location Department: "
-            android:textSize="16dp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textCostCenter"
@@ -51,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="Cost center: "
-            android:textSize="16dp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textLocationSection"
@@ -59,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="Location Section: "
-            android:textSize="16dp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textLocationMain"
@@ -67,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="Location Main: "
-            android:textSize="16dp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textDateinservice"
@@ -75,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="Date in service: "
-            android:textSize="16dp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textUnits"
@@ -83,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="Units: "
-            android:textSize="16dp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textCurrentcost"
@@ -91,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="Cost: "
-            android:textSize="16dp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textNetbookvalue"
@@ -99,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="Book value: "
-            android:textSize="16dp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textBoi"
@@ -107,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="BOI: "
-            android:textSize="16dp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textBoinumber"
@@ -115,7 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="BOI NUMBER: "
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <com.ebanx.swipebtn.SwipeButton
             android:id="@+id/assetinarea"
@@ -153,14 +154,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="อื่นๆ :"
-                android:textSize="16dp"/>
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/editProblem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:ems="11"
-                android:textSize="16dp"/>
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btnSaveProblem"

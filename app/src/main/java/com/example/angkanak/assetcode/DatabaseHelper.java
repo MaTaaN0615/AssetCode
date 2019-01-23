@@ -787,6 +787,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "''" + COL_ASSET_INAERA + "," +
                 COL_COST_CENTER + "," +
                 COL_LOCA_SECTION +
+
                 " FROM " + TABLE_ASSET +
                 " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
                 " AND " + COL_LOCA_SECTION + "='" +section+ "'" +

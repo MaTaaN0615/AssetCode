@@ -20,7 +20,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="Costcenter :"
-            android:textSize="16dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.023"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
             android:layout_marginEnd="8dp"
             android:text="CD"
             android:textColor="@color/blue1"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.122"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="Location Section :"
-            android:textSize="16dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.026"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
             android:layout_marginEnd="8dp"
             android:text="sec"
             android:textColor="@color/green"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.122"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
                 android:layout_weight="1"
                 android:text="###"
                 android:textColor="@color/blue"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -118,7 +118,7 @@
                 android:layout_weight="1"
                 android:text="##"
                 android:textColor="@color/red2"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -157,7 +157,7 @@
                 android:layout_weight="1"
                 android:text="##"
                 android:textColor="@color/green"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -197,7 +197,7 @@
                 android:layout_weight="1"
                 android:text="##"
                 android:textColor="@color/orange"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold"/>
 
             <TextView
