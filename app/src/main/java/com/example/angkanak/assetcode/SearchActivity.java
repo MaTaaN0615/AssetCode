@@ -5,20 +5,17 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.angkanak.assetcode.adapter.AssetAdapter;
 import com.example.angkanak.assetcode.adapter.SearchAdapter;
 
 public class SearchActivity extends AppCompatActivity {
@@ -29,14 +26,14 @@ public class SearchActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SearchAdapter mAdapter;
 
-    private final static String TAG = SearchActivity.class.getName().toString();
+    private final static String TAG = SearchActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mAdapter = new SearchAdapter(this,dbHelper.getAllItems());
@@ -58,7 +55,6 @@ public class SearchActivity extends AppCompatActivity {
         TextView tvNetBook;
         TextView tvBoi;
         TextView tvBoinum;
-
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,8 +80,6 @@ public class SearchActivity extends AppCompatActivity {
         super.onResume();
 
     }
-
-
 
     @Override
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)

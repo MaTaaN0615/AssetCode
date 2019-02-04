@@ -100,7 +100,6 @@ public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHol
 
     }
 
-
     public void swapCursor(Cursor newCursor){
         if(mCursor != null){
             mCursor.close();
