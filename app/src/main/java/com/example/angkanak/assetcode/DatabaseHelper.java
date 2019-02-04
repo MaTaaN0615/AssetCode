@@ -338,11 +338,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //                    ;
             Cursor cursor = readDB.rawQuery(" SELECT MAX(chas_id) FROM checkasset ",new String [] {});
             if (cursor != null)
-                if(cursor.moveToFirst())
-                {
-
+                if (cursor.moveToFirst()) {
                     mx = cursor.getInt(0);
-
                 }
             //  cursor.close();
 

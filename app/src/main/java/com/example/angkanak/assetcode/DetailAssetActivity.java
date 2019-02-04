@@ -1,15 +1,10 @@
 package com.example.angkanak.assetcode;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.ebanx.swipebtn.SwipeButton;
 import com.example.angkanak.assetcode.model.QrDivices;
 
 public class DetailAssetActivity extends AppCompatActivity {
@@ -84,9 +79,9 @@ public class DetailAssetActivity extends AppCompatActivity {
         net.setText("Book value: " + detail_netbook);
 
         TextView boi = findViewById(R.id.textBoiDetail);
-        boi.setText("Description: " + detail_boi);
+        boi.setText("BOI: " + detail_boi);
 
         TextView boinum = findViewById(R.id.textBoinumberDetail);
-        boinum.setText("Description: " + detail_boinum);
+        boinum.setText("BOI Number: " + detail_boinum);
     }
 }

@@ -14,9 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.angkanak.assetcode.DatabaseHelper;
-import com.example.angkanak.assetcode.model.QrDivices;
 import com.example.angkanak.assetcode.R;
 import com.example.angkanak.assetcode.ShowDetailAssetActivity;
+import com.example.angkanak.assetcode.model.QrDivices;
 
 import java.util.ArrayList;
 
@@ -31,8 +31,6 @@ public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHol
         mContext = context;
         mCursor = cursor;
     }
-
-
 
     public class AssetViewHolder extends RecyclerView.ViewHolder{
         public TextView numberText;
@@ -62,18 +60,6 @@ public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHol
 //                        Toast.makeText(mContext, "Click here" + position , Toast.LENGTH_SHORT).show();
                     }
                     return true;
-
-//                    if(event.getAction() == MotionEvent.ACTION_UP){
-//
-//                         Do what you want
-//                        int position = getAdapterPosition();
-//                        Intent intent = new Intent(mContext, SearchShowdetailActivity.class);
-//                        intent.putExtra("positionClick", position);
-//                        mContext.startActivity(intent);
-
-//                        return true;
-//                    }
-//                    return false;
                 }
             });
         }
