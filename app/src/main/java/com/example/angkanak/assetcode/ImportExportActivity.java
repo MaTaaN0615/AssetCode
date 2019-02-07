@@ -1,8 +1,8 @@
 package com.example.angkanak.assetcode;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -72,7 +72,7 @@ public class ImportExportActivity extends AppCompatActivity {
 
             // If buffer is not empty
             while ((line = reader.readLine()) != null) {
-                Log.d("MyActivity","Line: " + line);
+//                Log.d("MyActivity","Line: " + line);
 
                 arrayList_txt.add(line);
 
@@ -106,7 +106,7 @@ public class ImportExportActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),android.R.layout.simple_list_item_1,arrayList_txt);
-        final ListView listView = (ListView)findViewById(R.id.listViewAllAsset);
+        final ListView listView = findViewById(R.id.listViewAllAsset);
         listView.setAdapter(adapter);
 
     }
