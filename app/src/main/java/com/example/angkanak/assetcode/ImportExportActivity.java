@@ -48,7 +48,6 @@ public class ImportExportActivity extends AppCompatActivity {
     }
 
     private void readWeatherData() {
-
         ArrayList<String> arrayList_txt = new ArrayList<>();
 
         // Read the raw csv file
@@ -61,7 +60,6 @@ public class ImportExportActivity extends AppCompatActivity {
 
         // Initialization
         String line = "";
-
         ArrayList<String> list = new ArrayList<String>();
         final DatabaseHelper dbHelper = new DatabaseHelper(this);
 
@@ -69,16 +67,12 @@ public class ImportExportActivity extends AppCompatActivity {
         try {
             // Step over headers
             reader.readLine();
-
             // If buffer is not empty
             while ((line = reader.readLine()) != null) {
 //                Log.d("MyActivity","Line: " + line);
-
                 arrayList_txt.add(line);
-
                 // use comma as separator columns of CSV
                 String[] tokens = line.split(",");
-
                 // Setters
 //                sample.setMonth(tokens[0]);
 //                sample.setRainfall(Double.parseDouble(tokens[1]));
@@ -90,27 +84,21 @@ public class ImportExportActivity extends AppCompatActivity {
                         tokens[i]=null;
                     }
                 }
-
                dbHelper.addAsset(new Asset(tokens[0], tokens[1], tokens[2], tokens[3],
                                             tokens[4], tokens[5], tokens[6], tokens[7],
                                             tokens[8], tokens[9], tokens[10], tokens[11]));
-
                Toast.makeText(ImportExportActivity.this,"Seccess",Toast.LENGTH_SHORT).show();
             }
 
         } catch (IOException e) {
             // Logs error with priority level
             Log.wtf("ImportExportActivity", "Error reading data file on line" + line, e);
-
             // Prints throwable details
             e.printStackTrace();
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),android.R.layout.simple_list_item_1,arrayList_txt);
         final ListView listView = findViewById(R.id.listViewAllAsset);
         listView.setAdapter(adapter);
-
     }
 
 }
-
-

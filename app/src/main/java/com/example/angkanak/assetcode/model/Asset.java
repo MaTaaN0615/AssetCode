@@ -15,7 +15,7 @@ public class Asset {
     private String Boi;
     private String BoiNumber;
 
-//    private String SerialNymber;
+//    private String SerialNymber; //ของUHF RFID
 //    private String TagCardID;
 
     public Asset(String tagNumber, String description, String locaDepartment, String costCenter,
