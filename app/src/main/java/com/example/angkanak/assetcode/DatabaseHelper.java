@@ -484,8 +484,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
                 " AND " + COL_TAG_NUMBER + " NOT IN ( " +
                 " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
-                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
-                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " WHERE " + COL_ASSET_COSTCENTER + "='" + costcenter + "'" +
+                " AND " + COL_ASSET_LOCASECTION + "='" + section + "' )" +
                 " UNION ALL " + " SELECT " +
                 COL_ASSET_TAGNUMBER + "," +
                 COL_ASSET_DESCRIPTION + "," +
@@ -545,8 +545,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
                 " AND " + COL_TAG_NUMBER + " NOT IN ( " +
                 " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
-                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
-                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " WHERE " + COL_ASSET_COSTCENTER + "='" + costcenter + "'" +
+                " AND " + COL_ASSET_LOCASECTION + "='" + section + "' )" +
                 " UNION ALL " + " SELECT " +
                 COL_ASSET_TAGNUMBER + "," +
                 COL_ASSET_DESCRIPTION + "," +
@@ -583,8 +583,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
                 " AND " + COL_TAG_NUMBER + " NOT IN ( " +
                 " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
-                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
-                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " WHERE " + COL_ASSET_COSTCENTER + "='" + costcenter + "'" +
+                " AND " + COL_ASSET_LOCASECTION + "='" + section + "' )" +
                 " UNION ALL " + " SELECT " +
                 COL_ASSET_TAGNUMBER + "," +
                 COL_ASSET_DESCRIPTION + "," +
@@ -622,8 +622,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
                 " AND " + COL_TAG_NUMBER + " NOT IN ( " +
                 " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
-                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
-                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " WHERE " + COL_ASSET_COSTCENTER + "='" + costcenter + "'" +
+                " AND " + COL_ASSET_LOCASECTION + "='" + section + "' )" +
                 " UNION ALL " + " SELECT " +
                 COL_ASSET_TAGNUMBER + "," +
                 COL_ASSET_DESCRIPTION + "," +
@@ -664,8 +664,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
                 " AND " + COL_TAG_NUMBER + " NOT IN ( " +
                 " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
-                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
-                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " WHERE " + COL_ASSET_COSTCENTER + "='" + costcenter + "'" +
+                " AND " + COL_ASSET_LOCASECTION + "='" + section + "' )" +
                 " UNION ALL " + " SELECT " +
                 COL_ASSET_TAGNUMBER + "," +
                 COL_ASSET_DESCRIPTION + "," +
@@ -704,8 +704,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
                 " AND " + COL_TAG_NUMBER + " NOT IN ( " +
                 " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
-                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
-                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " WHERE " + COL_ASSET_COSTCENTER + "='" + costcenter + "'" +
+                " AND " + COL_ASSET_LOCASECTION + "='" + section + "' )" +
                 " UNION ALL " + " SELECT " +
                 COL_ASSET_TAGNUMBER + "," +
                 COL_ASSET_DESCRIPTION + "," +
@@ -749,8 +749,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
                 " AND " + COL_TAG_NUMBER + " NOT IN ( " +
                 " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
-                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
-                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " WHERE " + COL_ASSET_COSTCENTER + "='" + costcenter + "'" +
+                " AND " + COL_ASSET_LOCASECTION + "='" + section + "' )" +
                 " UNION ALL " + " SELECT " +
                 COL_ASSET_TAGNUMBER + "," +
                 COL_ASSET_DESCRIPTION + "," +
@@ -790,8 +790,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " AND " + COL_LOCA_SECTION + "='" +section+ "'" +
                 " AND " + COL_TAG_NUMBER + " NOT IN ( " +
                 " SELECT " + COL_ASSET_TAGNUMBER +  " FROM " + TABLE_CHECKASSET +
-                " WHERE " + COL_COST_CENTER + "='" +costcenter+ "'" +
-                " AND " + COL_LOCA_SECTION + "='" +section+ "' )" +
+                " WHERE " + COL_ASSET_COSTCENTER + "='" + costcenter + "'" +
+                " AND " + COL_ASSET_LOCASECTION + "='" + section + "' )" +
                 " UNION ALL " + " SELECT " +
                 COL_ASSET_TAGNUMBER + "," +
                 COL_ASSET_DESCRIPTION  + "," +

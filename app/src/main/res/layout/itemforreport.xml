@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="     " />
+                android:text=" " />
 
             <TextView
                 android:id="@+id/textView19"
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="In the area :"
-                android:textSize="1sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/txtInarea_itemreport"
