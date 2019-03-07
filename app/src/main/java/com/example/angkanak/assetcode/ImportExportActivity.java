@@ -73,7 +73,6 @@ public class ImportExportActivity extends AppCompatActivity {
                 arrayList_txt.add(line);
                 // use comma as separator columns of CSV
                 String[] tokens = line.split(",");
-                // Setters
 //                sample.setMonth(tokens[0]);
 //                sample.setRainfall(Double.parseDouble(tokens[1]));
 //                sample.setSun(Integer.parseInt(tokens[2]));
